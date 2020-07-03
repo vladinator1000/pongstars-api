@@ -1,6 +1,6 @@
 This is the back end for the 🏓[Pongstars app](https://github.com/jondeaves/pongstars).
 
-If you'd like to contribute, you're just starting out coding in Rust, check out [the book](https://doc.rust-lang.org/book/foreword.html), it's a great starting point.
+If you'd like to contribute, but you're just starting out coding in Rust, check out [the book](https://doc.rust-lang.org/book/foreword.html), it's a great starting point.
 
 To get started developing, you'll need the following prerequisites:
 
