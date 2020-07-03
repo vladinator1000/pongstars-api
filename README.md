@@ -1,4 +1,4 @@
-This is the back end for the 🏓[Pongstars app](https://github.com/jondeaves/pongstars).
+# The back end for 🏓[Pongstars](https://github.com/jondeaves/pongstars).
 
 If you'd like to contribute, but you're just starting out coding in Rust, check out [the book](https://doc.rust-lang.org/book/foreword.html), it's a great starting point.
 
@@ -12,7 +12,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 2. Install [Docker](https://www.docker.com/get-started)
 
 
-## To set up the app
+## Setup instructions
 1. Set up the database and required libraries
 ```
 make db
