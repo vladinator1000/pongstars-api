@@ -1,5 +1,5 @@
 use actix_web::{get, post, web, Error, HttpResponse};
-use juniper::{http::graphiql::graphiql_source, http::GraphQLRequest};
+use juniper::{http::playground::playground_source, http::GraphQLRequest};
 use std::sync::Arc;
 
 use super::{context::GraphQLContext, Schema};
@@ -7,7 +7,7 @@ use crate::db::pool::PostgresPool;
 
 #[get("/")]
 pub async fn playground() -> HttpResponse {
-    let html = graphiql_source("/graphql");
+    let html = playground_source("/graphql");
 
     HttpResponse::Ok()
         .content_type("text/html; charset=utf-8")
