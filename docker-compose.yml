@@ -1,0 +1,21 @@
+version: "3.7"
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: pongstars
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+    volumes:
+      - pongdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+  api:
+    image: pongstars-api
+    depends_on:
+      - db
+    ports:
+      - "3232:3232"
+volumes:
+  pongdata:
+    external: true
