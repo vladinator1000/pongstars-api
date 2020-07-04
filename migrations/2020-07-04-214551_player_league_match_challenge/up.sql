@@ -1,5 +1,3 @@
-BEGIN;
-
 CREATE TABLE player (
   -- the Firebase user ID
   id UUID PRIMARY KEY NOT NULL,
@@ -41,5 +39,3 @@ CREATE TABLE challenge (
   created_at TIMESTAMP NOT NULL,
   expires_at TIMESTAMP NOT NULL
 );
-
-COMMIT;

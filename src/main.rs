@@ -12,21 +12,11 @@ async fn main() -> std::io::Result<()> {
     let address = "127.0.0.1:3232";
     println!("Starting server at http://{}", address);
 
-    let mut listenfd = listenfd::ListenFd::from_env();
-
-    let mut server = HttpServer::new(move || {
+    let server = HttpServer::new(move || {
         App::new()
             .data(db.clone())
             .configure(graphql::endpoints::configure)
     });
 
-    // Dev mode autoreloading or fall back to normal bind
-    // https://actix.rs/docs/autoreload/
-    server = if let Some(listener) = listenfd.take_tcp_listener(0).unwrap() {
-        server.listen(listener)?
-    } else {
-        server.bind(address)?
-    };
-
-    server.run().await
+    server.bind(address)?.run().await
 }

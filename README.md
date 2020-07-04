@@ -2,26 +2,40 @@
 
 If you'd like to contribute, but you're just starting out coding in Rust, check out [the book](https://doc.rust-lang.org/book/foreword.html), it's a great starting point.
 
-To get started developing, you'll need the following prerequisites:
-
-1. Install Rust 
-```
+## Prerequisites:
+1. Rust 
+```sh
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
-2. Install [Docker](https://www.docker.com/get-started)
+2. [Docker](https://www.docker.com/get-started)
 
 
 ## Setup instructions
-1. Set up the database and required libraries
+
+1. Set up the CLI tools
+```sh
+make setup
 ```
+
+
+2. Start the database
+```sh
 make db
 ``` 
 
-2. Run the app and start watching for changes
+
+3. Run the DB migrations 
+```sh
+diesel migration run
 ```
+
+
+3. Run the app and start watching for changes
+```sh
 make dev
 ```
+
 
 Pongstars API uses these crates for most of the heavy lifting
 - [actix_web](https://crates.io/crates/actix-web) as the HTTP server

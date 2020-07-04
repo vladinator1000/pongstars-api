@@ -1,9 +1,10 @@
 setup:
 	docker volume create pongdata 
-	cargo install systemfd cargo-watch
+	cargo install diesel_cli --no-default-features --features postgres
+	cargo install cargo-watch
 
-db: setup
+db:
 	docker-compose up -d db
 	
 dev:
-	systemfd --no-pid -s http::3000 -- cargo watch -x run
+	cargo watch -x run
