@@ -1,0 +1,11 @@
+DROP TABLE challenge CASCADE;
+
+DROP TABLE match_league CASCADE;
+
+DROP TABLE match CASCADE;
+
+DROP TABLE player_league CASCADE;
+
+DROP TABLE player CASCADE;
+
+DROP TABLE league CASCADE;
