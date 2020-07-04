@@ -1,6 +1,6 @@
 DROP TABLE challenge CASCADE;
 
-DROP TABLE match_league CASCADE;
+DROP TABLE game CASCADE;
 
 DROP TABLE match CASCADE;
 

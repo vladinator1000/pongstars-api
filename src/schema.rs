@@ -8,6 +8,16 @@ table! {
 }
 
 table! {
+    game (id) {
+        id -> Int4,
+        #[sql_name = "match"]
+        match_ -> Int4,
+        score_one -> Int4,
+        score_two -> Int4,
+    }
+}
+
+table! {
     league (id) {
         id -> Int4,
         name -> Varchar,
@@ -17,21 +27,12 @@ table! {
 table! {
     match (id) {
         id -> Int4,
+        league -> Int4,
         player_one -> Uuid,
         player_two -> Uuid,
-        score_one -> Int4,
-        score_two -> Int4,
-        length -> Int4,
+        length -> Match_length,
         created_at -> Timestamp,
         played_at -> Nullable<Timestamp>,
-    }
-}
-
-table! {
-    match_league (match_, league) {
-        #[sql_name = "match"]
-        match_ -> Int4,
-        league -> Int4,
     }
 }
 
@@ -49,16 +50,16 @@ table! {
     }
 }
 
-joinable!(match_league -> league (league));
-joinable!(match_league -> match (match));
+joinable!(game -> match (match));
+joinable!(match -> league (league));
 joinable!(player_league -> league (league));
 joinable!(player_league -> player (player));
 
 allow_tables_to_appear_in_same_query!(
     challenge,
+    game,
     league,
     match,
-    match_league,
     player,
     player_league,
 );

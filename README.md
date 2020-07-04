@@ -41,3 +41,7 @@ Pongstars API uses these crates for most of the heavy lifting
 - [actix_web](https://crates.io/crates/actix-web) as the HTTP server
 - [juniper](https://crates.io/crates/juniper) as the GraphQL library
 - [diesel](https://crates.io/crates/diesel) as the database query builder
+
+
+### References
+- https://www.experttabletennis.com/table-tennis-rules-and-regulations/
