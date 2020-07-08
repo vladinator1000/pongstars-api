@@ -1,6 +1,5 @@
 #![allow(unused)]
 use chrono::NaiveDateTime;
-use diesel::prelude::*;
 
 #[derive(Queryable, Debug, Identifiable)]
 #[primary_key(sender, receiver)]
