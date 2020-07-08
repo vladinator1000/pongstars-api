@@ -4,6 +4,7 @@ setup:
 	rustup default nightly 
 	docker volume create pongdata 
 	cargo install diesel_cli --no-default-features --features postgres
+	cargo install diesel_cli_ext
 	cargo install cargo-watch
 
 db:

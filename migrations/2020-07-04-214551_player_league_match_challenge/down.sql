@@ -1,11 +1,16 @@
-DROP TABLE challenge CASCADE;
+DROP TABLE challenges CASCADE;
 
-DROP TABLE game CASCADE;
+DROP TABLE games CASCADE;
 
-DROP TABLE match CASCADE;
+DROP TABLE matches CASCADE;
+
+DELETE FROM
+  pg_type
+WHERE
+  typname = 'match_length';
 
 DROP TABLE player_league CASCADE;
 
-DROP TABLE player CASCADE;
+DROP TABLE players CASCADE;
 
-DROP TABLE league CASCADE;
+DROP TABLE leagues CASCADE;

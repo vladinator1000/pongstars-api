@@ -1,42 +1,40 @@
-CREATE TABLE player (
+CREATE TABLE players (
   -- the Firebase user ID
-  id UUID PRIMARY KEY NOT NULL,
+  id VARCHAR PRIMARY KEY NOT NULL,
   name VARCHAR NOT NULL
 );
 
-CREATE TABLE league (
+CREATE TABLE leagues (
   id SERIAL PRIMARY KEY NOT NULL,
   name VARCHAR NOT NULL
 );
 
 CREATE TABLE player_league (
-  player UUID NOT NULL REFERENCES player(id),
-  league SERIAL NOT NULL REFERENCES league(id),
+  player VARCHAR NOT NULL REFERENCES players(id),
+  league SERIAL NOT NULL REFERENCES leagues(id),
   PRIMARY KEY (player, league)
 );
 
-CREATE TYPE match_length AS ENUM('5', '7', '9');
-
-CREATE TABLE match (
+CREATE TABLE matches (
   id SERIAL PRIMARY KEY NOT NULL,
-  league SERIAL REFERENCES league(id),
-  player_one UUID NOT NULL REFERENCES player(id),
-  player_two UUID NOT NULL REFERENCES player(id),
-  length match_length NOT NULL DEFAULT '5',
+  league SERIAL REFERENCES leagues(id),
+  player_one VARCHAR NOT NULL REFERENCES players(id),
+  player_two VARCHAR NOT NULL REFERENCES players(id),
+  length INT NOT NULL DEFAULT 5,
   created_at TIMESTAMP NOT NULL,
   played_at TIMESTAMP
 );
 
-CREATE TABLE game (
+CREATE TABLE games (
   id SERIAL PRIMARY KEY NOT NULL,
-  match SERIAL NOT NULL REFERENCES match(id),
+  tt_match SERIAL NOT NULL REFERENCES matches(id),
   score_one INT NOT NULL DEFAULT 0,
   score_two INT NOT NULL DEFAULT 0
 );
 
-CREATE TABLE challenge (
-  sender UUID NOT NULL REFERENCES player(id),
-  receiver UUID NOT NULL REFERENCES player(id),
+CREATE TABLE challenges (
+  sender VARCHAR NOT NULL REFERENCES players(id),
+  receiver VARCHAR NOT NULL REFERENCES players(id),
   PRIMARY KEY (sender, receiver),
   created_at TIMESTAMP NOT NULL,
   expires_at TIMESTAMP NOT NULL
