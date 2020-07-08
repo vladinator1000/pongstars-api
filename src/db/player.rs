@@ -13,7 +13,6 @@ impl PlayerDataFunctions {
         //     .expect("Error creating player")
         unimplemented!()
     }
-
 }
 
 #[cfg(test)]
@@ -31,7 +30,7 @@ mod test {
             name: "Jon".into(),
         };
 
-        let result = Player::create(conn, new_player);
+        let result = PlayerDataFunctions::create(&conn, new_player);
 
         assert_eq!(result.name, "Jon")
     }

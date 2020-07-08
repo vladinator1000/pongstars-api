@@ -1,6 +1,6 @@
 #![allow(unused)]
-
 use chrono::NaiveDateTime;
+use diesel::prelude::*;
 
 #[derive(Queryable, Debug, Identifiable)]
 #[primary_key(sender, receiver)]
@@ -39,6 +39,7 @@ pub struct Match {
 
 #[derive(Queryable, Debug, Identifiable)]
 #[primary_key(player, league)]
+#[table_name = "player_league"]
 pub struct PlayerLeague {
     pub player: String,
     pub league: i32,
