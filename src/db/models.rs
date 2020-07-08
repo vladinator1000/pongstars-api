@@ -1,4 +1,5 @@
 #![allow(unused)]
+use super::schema::*;
 use chrono::NaiveDateTime;
 
 #[derive(Queryable, Debug, Identifiable)]
