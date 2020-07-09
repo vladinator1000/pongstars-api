@@ -44,9 +44,3 @@ pub struct PlayerLeague {
     pub player: String,
     pub league: i32,
 }
-
-#[derive(Queryable, Debug, Identifiable)]
-pub struct Player {
-    pub id: String,
-    pub name: String,
-}
