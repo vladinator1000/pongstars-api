@@ -1,4 +1,4 @@
-use super::league::{League, mock_league};
+use super::{challenge::{mock_challenge, Challenge}, league::{League, mock_league}};
 pub use crate::db::models::player::*;
 
 #[juniper::object]
@@ -17,6 +17,10 @@ impl Player {
 
     fn leagues(&self) -> Vec<League> {
         vec![mock_league()]
+    }
+
+    fn challenges() -> Vec<Challenge> {
+        vec![mock_challenge()]
     }
 }
 

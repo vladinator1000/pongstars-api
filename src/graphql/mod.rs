@@ -2,6 +2,7 @@ pub mod context;
 pub mod endpoints;
 pub mod player;
 pub mod league;
+pub mod challenge;
 
 use juniper::RootNode;
 use context::GraphQLContext;
@@ -14,7 +15,7 @@ pub struct RootQuery;
 impl RootQuery {
     fn current_player(_context: &GraphQLContext) -> Player {
         mock_player()
-   }
+    }
 
    fn log_in(_context: &GraphQLContext) -> Player {
        mock_player()

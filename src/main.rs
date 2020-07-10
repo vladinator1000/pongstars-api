@@ -6,6 +6,8 @@ use actix_web::{App, HttpServer};
 mod db;
 mod graphql;
 
+pub type DateTime = chrono::DateTime<chrono::Utc>;
+
 #[actix_rt::main]
 async fn main() -> std::io::Result<()> {
     std::env::set_var("RUST_LOG", "actix_web=info");
