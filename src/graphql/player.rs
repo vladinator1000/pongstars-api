@@ -1,6 +1,5 @@
-use crate::db::models::player::*;
-use super::{RootQuery, GraphQLContext};
-
+use super::league::{League, mock_league};
+pub use crate::db::models::player::*;
 
 #[juniper::object]
 impl Player {
@@ -15,23 +14,15 @@ impl Player {
     fn token(&self) -> &str {
         "token"
     }
-}
 
+    fn leagues(&self) -> Vec<League> {
+        vec![mock_league()]
+    }
+}
 
 pub fn mock_player() -> Player {
     Player {
         id: "1".into(),
         name: "Jon".into(),
-    }
-}
-
-#[juniper::object(Context=GraphQLContext)]
-impl RootQuery {
-    fn current_player(_context: &GraphQLContext) -> Player {
-         mock_player()
-    }
-
-    fn log_in(_context: &GraphQLContext) -> Player {
-        mock_player()
     }
 }

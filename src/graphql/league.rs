@@ -1,11 +1,10 @@
 use super::player::*;
-use crate::db::models::League::*;
-use super::{RootQuery, GraphQLContext};
+pub use crate::db::models::league::League;
 
 #[juniper::object]
 impl League {
     fn id(&self) -> i32 {
-        &self.id
+        self.id
     }
 
     fn name(&self) -> &str {
@@ -17,17 +16,9 @@ impl League {
     }
 }
 
-
-fn mock_league() -> League {
+pub fn mock_league() -> League {
     League {
-        id: "1".into(),
+        id: 1,
         name: "GLA".into(),
-    }
-}
-
-#[juniper::object(Context=GraphQLContext)]
-impl RootQuery {
-    fn leagues(_context: &GraphQLContext) -> Vec<League> {
-         vec![mock_league()]
     }
 }
