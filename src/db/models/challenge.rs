@@ -1,7 +1,7 @@
+use crate::db::schema::*;
+use crate::db::Connection;
 use chrono::NaiveDateTime;
 use diesel::prelude::*;
-use crate::db::Connection;
-use crate::db::schema::*;
 
 #[derive(Queryable, Debug, Identifiable)]
 #[primary_key(sender, receiver)]

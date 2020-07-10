@@ -1,13 +1,13 @@
+pub mod challenge;
 pub mod context;
 pub mod endpoints;
-pub mod player;
 pub mod league;
-pub mod challenge;
+pub mod player;
 
-use juniper::RootNode;
 use context::GraphQLContext;
-use player::{mock_player, Player};
+use juniper::RootNode;
 use league::{mock_league, League};
+use player::{mock_player, Player};
 
 pub struct RootQuery;
 
@@ -17,21 +17,19 @@ impl RootQuery {
         mock_player()
     }
 
-   fn log_in(_context: &GraphQLContext) -> Player {
-       mock_player()
-   }
+    fn log_in(_context: &GraphQLContext) -> Player {
+        mock_player()
+    }
 
-   fn leagues(_context: &GraphQLContext) -> Vec<League> {
+    fn leagues(_context: &GraphQLContext) -> Vec<League> {
         vec![mock_league()]
     }
 }
-
 
 pub struct RootMutation;
 
 #[juniper::object(Context=GraphQLContext)]
 impl RootMutation {}
-
 
 pub type Schema = RootNode<'static, RootQuery, RootMutation>;
 

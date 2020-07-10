@@ -12,7 +12,7 @@ impl League {
     }
 
     fn players(&self) -> Vec<Player> {
-      vec![mock_player()]
+        vec![mock_player()]
     }
 }
 

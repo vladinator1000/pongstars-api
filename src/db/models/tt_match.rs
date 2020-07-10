@@ -1,7 +1,7 @@
-use diesel::prelude::*;
-use chrono::NaiveDateTime;
-use crate::db::Connection;
 use crate::db::schema::*;
+use crate::db::Connection;
+use chrono::NaiveDateTime;
+use diesel::prelude::*;
 
 #[derive(Queryable, Debug, Identifiable)]
 #[table_name = "matches"]

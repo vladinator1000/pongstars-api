@@ -1,4 +1,7 @@
-use super::{challenge::{mock_challenge, Challenge}, league::{League, mock_league}};
+use super::{
+    challenge::{mock_challenge, Challenge},
+    league::{mock_league, League},
+};
 pub use crate::db::models::player::*;
 
 #[juniper::object]
