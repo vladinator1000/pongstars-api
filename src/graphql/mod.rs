@@ -1,23 +1,11 @@
 pub mod context;
 pub mod endpoints;
-pub mod user;
+pub mod player;
 
 use juniper::RootNode;
-
 use context::GraphQLContext;
-use user::User;
 
 pub struct RootQuery;
-
-#[juniper::object(Context=GraphQLContext)]
-impl RootQuery {
-    fn current_user(_context: &GraphQLContext) -> User {
-        User {
-            id: 1,
-            name: "Jon".to_string(),
-        }
-    }
-}
 
 pub struct RootMutation;
 

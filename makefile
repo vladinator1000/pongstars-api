@@ -9,7 +9,6 @@ setup:
 
 db:
 	docker-compose up -d db
-	diesel migration run
 	
 dev:
 	cargo watch -x run
