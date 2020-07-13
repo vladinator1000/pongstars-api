@@ -1,4 +1,4 @@
-# The back end for 🏓[Pongstars](https://github.com/jondeaves/pongstars).
+# The back end for 🏓 [Pongstars](https://github.com/jondeaves/pongstars).
 
 If you'd like to contribute, but you're just starting out coding in Rust, check out [the book](https://doc.rust-lang.org/book/foreword.html), it's a great starting point.
 
