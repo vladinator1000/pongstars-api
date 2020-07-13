@@ -1,8 +1,9 @@
 # The back end for 🏓 [Pongstars](https://github.com/jondeaves/pongstars).
+Pongstars is a table tennis mobile app made in [Flutter](https://flutter.dev/). Here's how it [looks like](https://www.figma.com/file/wLqZVZWcI0nSSIdq4LvNXg/PongStars-app-design-iOS?node-id=0%3A1).
+
 
 If you'd like to contribute, but you're just starting out coding in Rust, check out [the book](https://doc.rust-lang.org/book/foreword.html), it's a great starting point.
 
-Here are [the designs](https://www.figma.com/file/wLqZVZWcI0nSSIdq4LvNXg/PongStars-app-design-iOS?node-id=0%3A1) for the mobile app.
 
 ## Prerequisites:
 
