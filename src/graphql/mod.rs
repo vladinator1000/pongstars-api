@@ -4,12 +4,15 @@ pub mod endpoints;
 pub mod league;
 pub mod player;
 pub mod auth;
+pub mod mocks;
 
-use context::GraphQLContext;
 use juniper::RootNode;
-use league::{mock_league, League};
-use player::{mock_player, Player};
-use auth::{mock_login_result, LoginResult, LoginInput, SignupInput};
+use context::GraphQLContext;
+use league::{League};
+use player::{Player};
+use auth::{LoginResult, LoginInput, SignupInput};
+use mocks::{mock_league, mock_date_time, mock_login_result, mock_player};
+use crate::DateTimeUtc;
 
 pub struct RootQuery;
 
@@ -26,6 +29,10 @@ impl RootQuery {
     
     fn sign_up(_context: &GraphQLContext, input: SignupInput) -> bool {
         true
+    }
+
+    fn joined(_context: &GraphQLContext, ) -> DateTimeUtc {
+        mock_date_time()
     }
 
     fn leagues(_context: &GraphQLContext) -> Vec<League> {

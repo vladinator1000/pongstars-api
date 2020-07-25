@@ -1,4 +1,4 @@
-use super::player::*;
+use super::{mocks::mock_player, player::Player};
 pub use crate::db::models::league::League;
 
 #[juniper::object]
@@ -11,14 +11,7 @@ impl League {
         &self.name
     }
 
-    fn players(&self) -> Vec<Player> {
+    fn members(&self) -> Vec<Player> {
         vec![mock_player()]
-    }
-}
-
-pub fn mock_league() -> League {
-    League {
-        id: 1,
-        name: "GLA".into(),
     }
 }

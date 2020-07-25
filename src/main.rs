@@ -6,7 +6,7 @@ use actix_web::{App, HttpServer};
 mod db;
 mod graphql;
 
-pub type DateTime = chrono::DateTime<chrono::Utc>;
+pub type DateTimeUtc = chrono::DateTime<chrono::Utc>;
 
 #[actix_rt::main]
 async fn main() -> std::io::Result<()> {

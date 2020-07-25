@@ -41,7 +41,7 @@ table! {
     player_league (player, league) {
         player -> Varchar,
         league -> Int4,
-        match_making_rating -> Int4,
+        matchmaking_rating -> Int4,
         matches_played -> Int4,
         wins -> Int4,
         losses -> Int4,

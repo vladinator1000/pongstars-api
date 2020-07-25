@@ -8,7 +8,7 @@ use diesel::prelude::*;
 pub struct PlayerLeague {
   pub player: String,
   pub league: i32,
-  pub match_making_rating: i32,
+  pub matchmaking_rating: i32,
   pub matches_played: i32,
   pub wins: i32,
   pub losses: i32,

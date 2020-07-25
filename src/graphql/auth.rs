@@ -1,22 +1,22 @@
-use super::player::{mock_player, Player};
+use super::{mocks::mock_player, player::{Player}};
 
 #[derive(juniper::GraphQLInputObject)]
 pub struct SignupInput {
-  first_name: String,
-  surname: String,
-  email: String,
-  password: String
+  pub first_name: String,
+  pub surname: String,
+  pub email: String,
+  pub password: String
 }
 
 #[derive(juniper::GraphQLInputObject)]
 pub struct LoginInput {
-  email: String,
-  password: String
+  pub email: String,
+  pub password: String
 }
 
 pub struct LoginResult {
-  player: Player,
-  token: String
+  pub player: Player,
+  pub token: String
 }
 
 #[juniper::object]
@@ -29,11 +29,3 @@ impl LoginResult {
       &self.token
   }
 }
-
-pub fn mock_login_result() -> LoginResult {
-  LoginResult {
-      player: mock_player(),
-      token: "token".to_string()
-  }
-}
-

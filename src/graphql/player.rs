@@ -1,8 +1,9 @@
 use super::{
-    challenge::{mock_challenge, Challenge},
-    league::{mock_league, League},
+    challenge::{Challenge},
+    league::{League},
+    mocks::{mock_challenge, mock_league, mock_date_time, mock_stats},
 };
-pub use crate::db::models::player::Player;
+pub use crate::{DateTimeUtc, db::models::player::Player};
 
 #[juniper::object]
 impl Player {
@@ -21,11 +22,20 @@ impl Player {
     fn challenges() -> Vec<Challenge> {
         vec![mock_challenge()]
     }
+
+    fn joined() -> DateTimeUtc {
+        mock_date_time()
+    }
+
+    fn stats(&self, league_id: i32) -> Stats {
+        mock_stats()
+    }
 }
 
-pub fn mock_player() -> Player {
-    Player {
-        id: "1".into(),
-        name: "Jon".into(),
-    }
+#[derive(juniper::GraphQLObject)]
+pub struct Stats {
+    pub matchmaking_rating: i32,
+    pub matches_played: i32,
+    pub wins: i32,
+    pub losses: i32,
 }
