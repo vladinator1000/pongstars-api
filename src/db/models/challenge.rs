@@ -7,7 +7,9 @@ use diesel::prelude::*;
 #[primary_key(sender, receiver)]
 pub struct Challenge {
     pub sender: String,
-    pub receiver: String,
+    pub message: Option<String>,
+    pub receiver: Option<String>,
     pub created_at: NaiveDateTime,
     pub expires_at: NaiveDateTime,
+    pub is_ranked: bool,
 }

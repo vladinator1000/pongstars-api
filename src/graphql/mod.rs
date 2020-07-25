@@ -3,11 +3,13 @@ pub mod context;
 pub mod endpoints;
 pub mod league;
 pub mod player;
+pub mod auth;
 
 use context::GraphQLContext;
 use juniper::RootNode;
 use league::{mock_league, League};
 use player::{mock_player, Player};
+use auth::{mock_login_result, LoginResult, LoginInput, SignupInput};
 
 pub struct RootQuery;
 
@@ -17,8 +19,13 @@ impl RootQuery {
         mock_player()
     }
 
-    fn log_in(_context: &GraphQLContext) -> Player {
-        mock_player()
+    fn log_in(_context: &GraphQLContext, input: LoginInput) -> LoginResult {
+        mock_login_result()
+        
+    }
+    
+    fn sign_up(_context: &GraphQLContext, input: SignupInput) -> bool {
+        true
     }
 
     fn leagues(_context: &GraphQLContext) -> Vec<League> {

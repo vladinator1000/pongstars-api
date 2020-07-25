@@ -23,7 +23,7 @@ make setup
 1. Run the app, it will start watching for changes
 
 ```sh
-make dev
+cargo run
 ```
 
 Pongstars API uses these crates for most of the heavy lifting
@@ -31,6 +31,14 @@ Pongstars API uses these crates for most of the heavy lifting
 - [actix_web](https://crates.io/crates/actix-web) as the HTTP server
 - [juniper](https://crates.io/crates/juniper) as the GraphQL library
 - [diesel](https://crates.io/crates/diesel) as the database query builder
+
+To generate data models from the database for reference 
+
+```sh
+diesel_ext > src/db/reference_models.rs
+```
+
+⚠ This is not used within the actual code, because it's split in separate modules. It's useful to know this command if you change the database schema and would like to auto-generate models that you can copy in your code.
 
 ### References
 

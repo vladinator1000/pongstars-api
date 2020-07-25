@@ -2,6 +2,8 @@ table! {
     challenges (sender, receiver) {
         sender -> Varchar,
         receiver -> Varchar,
+        message -> Nullable<Text>,
+        is_ranked -> Bool,
         created_at -> Timestamp,
         expires_at -> Timestamp,
     }
@@ -39,6 +41,10 @@ table! {
     player_league (player, league) {
         player -> Varchar,
         league -> Int4,
+        match_making_rating -> Int4,
+        matches_played -> Int4,
+        wins -> Int4,
+        losses -> Int4,
     }
 }
 
@@ -54,4 +60,11 @@ joinable!(matches -> leagues (league));
 joinable!(player_league -> leagues (league));
 joinable!(player_league -> players (player));
 
-allow_tables_to_appear_in_same_query!(challenges, games, leagues, matches, player_league, players,);
+allow_tables_to_appear_in_same_query!(
+    challenges,
+    games,
+    leagues,
+    matches,
+    player_league,
+    players,
+);

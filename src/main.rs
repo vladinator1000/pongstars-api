@@ -14,6 +14,7 @@ async fn main() -> std::io::Result<()> {
     env_logger::init();
 
     let db = db::pool::get_pool();
+    
     let address = "127.0.0.1:3232";
     println!("Starting server at http://{}", address);
 

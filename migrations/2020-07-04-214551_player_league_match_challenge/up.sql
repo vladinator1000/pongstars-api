@@ -12,7 +12,12 @@ CREATE TABLE leagues (
 CREATE TABLE player_league (
   player VARCHAR NOT NULL REFERENCES players(id),
   league SERIAL NOT NULL REFERENCES leagues(id),
-  PRIMARY KEY (player, league)
+  PRIMARY KEY (player, league),
+  -- Jon says this could be a view
+  match_making_rating INT NOT NULL DEFAULT 1000,
+  matches_played INT NOT NULL DEFAULT 0,
+  wins INT NOT NULL DEFAULT 0,
+  losses INT NOT NULL DEFAULT 0
 );
 
 CREATE TABLE matches (
@@ -34,8 +39,10 @@ CREATE TABLE games (
 
 CREATE TABLE challenges (
   sender VARCHAR NOT NULL REFERENCES players(id),
-  receiver VARCHAR NOT NULL REFERENCES players(id),
+  receiver VARCHAR REFERENCES players(id),
   PRIMARY KEY (sender, receiver),
+  message TEXT,
+  is_ranked BOOLEAN NOT NULL,
   created_at TIMESTAMP NOT NULL,
   expires_at TIMESTAMP NOT NULL
 );

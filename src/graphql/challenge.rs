@@ -9,10 +9,14 @@ impl Challenge {
         mock_player()
     }
 
-    fn receiver(&self) -> Player {
-        mock_player()
+    fn receiver(&self) -> Option<Player> {
+        Some(mock_player())
     }
-
+    
+    fn is_ranked(&self) -> bool {
+        true
+    }
+    
     fn created_at(&self) -> DateTime {
         DateTime::from_utc(self.created_at, Utc)
     }
@@ -20,6 +24,7 @@ impl Challenge {
     fn expires_at(&self) -> DateTime {
         DateTime::from_utc(self.expires_at, Utc)
     }
+
 }
 
 pub fn mock_challenge() -> Challenge {
@@ -27,8 +32,10 @@ pub fn mock_challenge() -> Challenge {
 
     Challenge {
         sender: "Vladinator".into(),
-        receiver: "Jon".into(),
+        receiver: Some("Jon".into()),
+        message: Some("Looking for a game before lunch.".into()),
         created_at: date_time,
         expires_at: date_time,
+        is_ranked: false,
     }
 }

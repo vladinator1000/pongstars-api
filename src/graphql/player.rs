@@ -2,7 +2,7 @@ use super::{
     challenge::{mock_challenge, Challenge},
     league::{mock_league, League},
 };
-pub use crate::db::models::player::*;
+pub use crate::db::models::player::Player;
 
 #[juniper::object]
 impl Player {
@@ -12,10 +12,6 @@ impl Player {
 
     fn name(&self) -> &str {
         &self.name
-    }
-
-    fn token(&self) -> &str {
-        "token"
     }
 
     fn leagues(&self) -> Vec<League> {
