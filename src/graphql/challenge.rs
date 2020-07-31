@@ -1,9 +1,9 @@
 use super::league::League;
-use super::{mocks::mock_player, player::Player};
+use super::{context::GraphQLContext, mocks::mock_player, player::Player};
 pub use crate::{db::models::challenge::*, DateTimeUtc};
 use chrono::Utc;
 
-#[juniper::object]
+#[juniper::object(Context=GraphQLContext)]
 impl Challenge {
     fn sender(&self) -> Player {
         mock_player()

@@ -1,4 +1,4 @@
-use super::{mocks::mock_player, player::{Player}};
+use super::{context::GraphQLContext, mocks::mock_player, player::{Player}};
 
 #[derive(juniper::GraphQLInputObject)]
 pub struct SignupInput {
@@ -19,7 +19,7 @@ pub struct LoginResult {
   pub token: String
 }
 
-#[juniper::object]
+#[juniper::object(Context=GraphQLContext)]
 impl LoginResult {
   fn player(&self) -> Player {
       mock_player()

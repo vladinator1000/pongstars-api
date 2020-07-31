@@ -1,7 +1,7 @@
-use super::{mocks::mock_player, player::Player};
+use super::{context::GraphQLContext, mocks::mock_player, player::Player};
 pub use crate::db::models::league::League;
 
-#[juniper::object]
+#[juniper::object(Context=GraphQLContext)]
 impl League {
     fn id(&self) -> i32 {
         self.id

@@ -1,11 +1,12 @@
 use super::{
+    context::GraphQLContext,
     challenge::{Challenge},
     league::{League},
-    mocks::{mock_challenge, mock_league, mock_date_time, mock_stats},
+    mocks::{mock_challenge, mock_league, mock_date_time, mock_stats, mock_table_tennis_match},
 };
-pub use crate::{DateTimeUtc, db::models::player::Player};
+pub use crate::{DateTimeUtc, db::{table_tennis_match::TableTennisMatch, models::player::Player}};
 
-#[juniper::object]
+#[juniper::object(Context=GraphQLContext)]
 impl Player {
     fn id(&self) -> &str {
         &self.id
@@ -29,6 +30,10 @@ impl Player {
 
     fn stats(&self, league_id: i32) -> Stats {
         mock_stats()
+    }
+
+    fn matches(&self) -> Vec<TableTennisMatch> {
+        vec![mock_table_tennis_match()]
     }
 }
 

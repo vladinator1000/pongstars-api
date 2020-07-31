@@ -32,7 +32,7 @@ CREATE TABLE matches (
 
 CREATE TABLE games (
   id SERIAL PRIMARY KEY NOT NULL,
-  tt_match SERIAL NOT NULL REFERENCES matches(id),
+  table_tennis_match SERIAL NOT NULL REFERENCES matches(id),
   score_one INT NOT NULL DEFAULT 0,
   score_two INT NOT NULL DEFAULT 0
 );

@@ -12,7 +12,7 @@ table! {
 table! {
     games (id) {
         id -> Int4,
-        tt_match -> Int4,
+        table_tennis_match -> Int4,
         score_one -> Int4,
         score_two -> Int4,
     }
@@ -55,7 +55,7 @@ table! {
     }
 }
 
-joinable!(games -> matches (tt_match));
+joinable!(games -> matches (table_tennis_match));
 joinable!(matches -> leagues (league));
 joinable!(player_league -> leagues (league));
 joinable!(player_league -> players (player));

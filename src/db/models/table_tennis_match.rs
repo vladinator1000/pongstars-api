@@ -5,7 +5,7 @@ use diesel::prelude::*;
 
 #[derive(Queryable, Debug, Identifiable)]
 #[table_name = "matches"]
-pub struct Match {
+pub struct TableTennisMatch {
     pub id: i32,
     pub league: i32,
     pub player_one: String,

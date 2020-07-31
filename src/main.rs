@@ -1,6 +1,5 @@
 #[macro_use]
 extern crate diesel;
-
 use actix_web::{App, HttpServer};
 
 mod db;
@@ -10,17 +9,19 @@ pub type DateTimeUtc = chrono::DateTime<chrono::Utc>;
 
 #[actix_rt::main]
 async fn main() -> std::io::Result<()> {
+
+
     std::env::set_var("RUST_LOG", "actix_web=info");
     env_logger::init();
 
-    let db = db::pool::get_pool();
+    let db_pool = db::pool::get_pool();
     
     let address = "127.0.0.1:3232";
     println!("Starting server at http://{}", address);
 
     let server = HttpServer::new(move || {
         App::new()
-            .data(db.clone())
+            .data(db_pool.clone())
             .configure(graphql::endpoints::configure)
     });
 
