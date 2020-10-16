@@ -32,7 +32,6 @@ async fn handle_graphiql(_: Request<graphql::Context>) -> tide::Result<impl Into
 #[async_std::main]
 async fn main() -> std::io::Result<()> {
     let mut app = Server::with_state(graphql::Context {});
-
     
     app.at("/").get(Redirect::permanent("/graphiql"));
     app.at("/graphql").post(handle_graphql);
