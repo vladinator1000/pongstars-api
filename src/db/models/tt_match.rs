@@ -1,10 +1,6 @@
-use crate::db::schema::*;
-use crate::db::Connection;
 use chrono::NaiveDateTime;
-use diesel::prelude::*;
 
-#[derive(Queryable, Debug, Identifiable)]
-#[table_name = "matches"]
+#[derive(Debug)]
 pub struct Match {
     pub id: i32,
     pub league: i32,

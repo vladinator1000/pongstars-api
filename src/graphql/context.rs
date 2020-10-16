@@ -1,7 +1,4 @@
-use crate::db::pool::PostgresPool;
+#[derive(Clone)]
+pub struct Context {}
 
-pub struct GraphQLContext {
-    pub db: PostgresPool,
-}
-
-impl juniper::Context for GraphQLContext {}
+impl juniper::Context for Context {}

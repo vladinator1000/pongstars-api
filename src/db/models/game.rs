@@ -1,8 +1,4 @@
-use crate::db::schema::*;
-use crate::db::Connection;
-use diesel::prelude::*;
-
-#[derive(Queryable, Debug, Identifiable)]
+#[derive(Debug)]
 pub struct Game {
     pub id: i32,
     pub tt_match: i32,
