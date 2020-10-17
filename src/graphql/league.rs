@@ -1,7 +1,7 @@
 use super::player::*;
 pub use crate::db::models::league::League;
 
-#[juniper::object]
+#[juniper::graphql_object]
 impl League {
     fn id(&self) -> i32 {
         self.id

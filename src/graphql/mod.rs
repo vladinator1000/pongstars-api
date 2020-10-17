@@ -1,20 +1,20 @@
-use juniper::RootNode;
+use juniper::{EmptySubscription, RootNode};
 use lazy_static::lazy_static;
 
+pub use context::Context;
 use league::{mock_league, League};
 use player::{mock_player, Player};
-pub use context::Context;
 
-pub mod context;
 pub mod challenge;
+pub mod context;
 pub mod league;
 pub mod player;
 
 pub struct RootQuery;
 
-#[juniper::object(Context=Context)]
+#[juniper::graphql_object(Context=Context)]
 impl RootQuery {
-    fn current_player(_context: &Context) -> Player {
+    async fn current_player(context: &Context) -> Player {
         mock_player()
     }
 
@@ -29,13 +29,17 @@ impl RootQuery {
 
 pub struct RootMutation;
 
-#[juniper::object(Context=Context)]
-impl RootMutation {}
+#[juniper::graphql_object(Context=Context)]
+impl RootMutation {
+    fn hello() -> &str {
+        "world"
+    }
+}
 
-pub type Schema = RootNode<'static, RootQuery, RootMutation>;
+pub type Schema = RootNode<'static, RootQuery, RootMutation, EmptySubscription<Context>>;
 
 pub fn make_schema() -> Schema {
-    Schema::new(RootQuery {}, RootMutation {})
+    Schema::new(RootQuery {}, RootMutation {}, EmptySubscription::new())
 }
 
 lazy_static! {

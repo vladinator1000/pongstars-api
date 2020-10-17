@@ -3,7 +3,7 @@ use super::player::{mock_player, Player};
 pub use crate::{db::models::challenge::*, DateTime};
 use chrono::{NaiveDate, Utc};
 
-#[juniper::object]
+#[juniper::graphql_object]
 impl Challenge {
     fn sender(&self) -> Player {
         mock_player()

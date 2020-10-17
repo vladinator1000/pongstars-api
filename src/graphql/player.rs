@@ -4,7 +4,7 @@ use super::{
 };
 pub use crate::db::models::player::*;
 
-#[juniper::object]
+#[juniper::graphql_object]
 impl Player {
     fn id(&self) -> &str {
         &self.id
