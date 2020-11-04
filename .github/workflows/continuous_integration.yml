@@ -32,10 +32,9 @@ jobs:
       - uses: actions-rs/cargo@v1
         with:
           command: build
-          args: --release --all-features
 
       - name: Integration tests
-        run: mv .env.github .env && cargo test --features "integration" --verbose
+        run: mv .env.example .env && cargo test --features "integration" --verbose
         env:
           RUST_LOG: info
     # - name: Run migrations
