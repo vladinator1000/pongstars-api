@@ -28,6 +28,31 @@ make setup
 make dev
 ```
 
+## Testing
+
+Run the unit tests
+```sh
+cargo test
+```
+
+Run the integration tests
+```sh
+cargo test --features "integration_tests"
+```
+
+## Additional info
+
+Run in release mode
+```sh
+cargo run --release
+```
+
+
+Build in release mode
+```sh
+cargo build --release
+```
+
 Pongstars API uses these crates for most of the heavy lifting
 
 - [Tide](https://github.com/http-rs/tide) as the HTTP server
