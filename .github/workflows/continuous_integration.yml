@@ -36,11 +36,11 @@ jobs:
       - name: Make env file
         run: mv .env.example .env
 
-      - name: Integration Tests
       - uses: actions-rs/cargo@v1
         with:
           command: test
           args: --features "integration_tests"
+      - name: Integration Tests
     # - name: Run migrations
     #   run: sqlx migration run
     #   env:
