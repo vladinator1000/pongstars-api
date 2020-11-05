@@ -40,6 +40,9 @@ Run the integration tests
 cargo test --features "integration_tests"
 ```
 
+You can read more info on testing [here](docs/Testing.md).
+
+
 ## Additional info
 
 Run in release mode
