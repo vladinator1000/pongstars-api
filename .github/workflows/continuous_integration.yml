@@ -33,10 +33,14 @@ jobs:
         with:
           command: build
 
-      - name: Integration tests
-        run: mv .env.example .env && cargo test --features "integration" --verbose
-        env:
-          RUST_LOG: info
+      - name: Make env file
+        run: mv .env.example .env
+
+      - name: Integration Tests
+      - uses: actions-rs/cargo@v1
+        with:
+          command: test
+          args: --features "integration_tests"
     # - name: Run migrations
     #   run: sqlx migration run
     #   env:
