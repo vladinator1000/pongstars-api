@@ -19,6 +19,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: ⚡ Cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
@@ -28,15 +37,6 @@ jobs:
         with:
           command: build
 
-      - name: Cache
-        uses: actions/cache@v2
-        with:
-          path: |
-            ~/.cargo/registry
-            ~/.cargo/git
-            target
-          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-
       - name: Create env file
         run: mv .env.example .env
 
@@ -45,7 +45,7 @@ jobs:
         with:
           command: test
 
-      - name: ⚙ Integration Test
+      - name: ⚙ Integration test
         uses: actions-rs/cargo@v1
         with:
           command: test
